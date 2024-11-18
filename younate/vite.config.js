@@ -6,13 +6,19 @@ import vueDevTools from 'vite-plugin-vue-devtools'
 
 // https://vite.dev/config/
 export default defineConfig({
+  base: '/',
   plugins: [
     vue(),
-    vueDevTools(),
+    vueDevTools({
+      enabled: true // Stellen Sie sicher, dass das Plugin aktiviert ist
+    })
   ],
   resolve: {
     alias: {
       '@': fileURLToPath(new URL('./src', import.meta.url))
     },
   },
+  build: {
+    sourcemap: true
+  }
 })

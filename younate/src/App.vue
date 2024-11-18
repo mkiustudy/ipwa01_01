@@ -1,85 +1,67 @@
-<script setup>
-import { RouterLink, RouterView } from 'vue-router'
-import HelloWorld from './components/HelloWorld.vue'
-</script>
-
 <template>
   <header>
-    <img alt="Vue logo" class="logo" src="@/assets/logo.svg" width="125" height="125" />
-
-    <div class="wrapper">
-      <HelloWorld msg="You did it!" />
-
-      <nav>
-        <RouterLink to="/">Home</RouterLink>
-        <RouterLink to="/about">About</RouterLink>
-      </nav>
-    </div>
+    <page-navi :pages="pages"></page-navi>
   </header>
-
-  <RouterView />
+  <main>
+    <div class="container overflow-auto p-5">
+      <router-view></router-view>
+    </div>
+  </main>
+  <footer class="footer mt-auto py-3 bg-dark text-light">
+    <page-footer></page-footer>
+  </footer>
 </template>
 
-<style scoped>
-header {
-  line-height: 1.5;
-  max-height: 100vh;
-}
+<script>
+import PageNavi from './views/PageNavi.vue'
+import PageFooter from './views/PageFooter.vue'
 
-.logo {
-  display: block;
-  margin: 0 auto 2rem;
+export default {
+  components: {
+    PageNavi,
+    PageFooter
+  },
+  data() {
+    return {
+      pages: [
+        { title: 'Home', url: '/' },
+        { title: 'Tablet', url: '/tablet' },
+        { title: 'Impressum', url: '/impressum' },
+        { title: 'Datenschutz', url: '/datenschutz' }
+      ],
+      formSent: false,
+      formValidationError: false,
+      formValidationResults: [],
+      formValidationValues: []
+    }
+  },
+  methods: {
+    handleValidationResults(formSent, hasError, values, results) {
+      this.formSent = formSent
+      this.formValidationError = hasError
+      this.formValidationValues = values
+      this.formValidationResults = results
+    }
+  }
 }
-
-nav {
+</script>
+<style>
+html {
+  position: relative;
+  min-height: 100%;
+}
+body {
+  background-color: #deddd4 !important;
+  /* Margin bottom by footer height */
+  margin-bottom: 60px;
+}
+.footer {
+  position: absolute;
+  bottom: 0;
   width: 100%;
-  font-size: 12px;
-  text-align: center;
-  margin-top: 2rem;
-}
-
-nav a.router-link-exact-active {
-  color: var(--color-text);
-}
-
-nav a.router-link-exact-active:hover {
-  background-color: transparent;
-}
-
-nav a {
-  display: inline-block;
-  padding: 0 1rem;
-  border-left: 1px solid var(--color-border);
-}
-
-nav a:first-of-type {
-  border: 0;
-}
-
-@media (min-width: 1024px) {
-  header {
-    display: flex;
-    place-items: center;
-    padding-right: calc(var(--section-gap) / 2);
-  }
-
-  .logo {
-    margin: 0 2rem 0 0;
-  }
-
-  header .wrapper {
-    display: flex;
-    place-items: flex-start;
-    flex-wrap: wrap;
-  }
-
-  nav {
-    text-align: left;
-    margin-left: -1rem;
-    font-size: 1rem;
-
-    padding: 1rem 0;
-    margin-top: 1rem;
-  }
+  /* Set the fixed height of the footer here */
+  height: 60px;
+  line-height: 20px; /* Vertically center the text there */
+  background-color: #deddd4;
 }
 </style>
