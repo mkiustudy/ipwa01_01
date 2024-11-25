@@ -1,0 +1,16 @@
+Vorname;Nachname;Straße;Hausnummer;Postleitzahl;Stadt
+Max;Mustermann;Musterstraße;12a;04103;Leipzig
+Anna;Schmidt;Hauptstraße;4;04275;Leipzig
+Peter;Fischer;Waldweg;99;04315;Leipzig
+;Meier;Bergstraße;1;12345;Berlin
+Clara;;Feldweg;23;56789;Hamburg
+Lukas;Keller;;45;67890;München
+Maria;Huber;Bahnhofstraße;;23456;Stuttgart
+Thomas;Weber;Ringstraße;5b;;Frankfurt
+Sophie;Schneider;Marktplatz;0;ABCDE;Dresden
+Jakob;Krüger;Allee;7z;13579;
+Lea;Hoffmann;Neustadtstraße;101;ABCDE;Hannover
+Erik;Maier;Brückenstraße;89;54321;Düsseldorf
+Tina;Lang;Am Hang;12;04207;Leipzig
+Jonas;König;Schloßweg;9c;04001;Leipzig
+Mona;Lindner;Gartenstraße;22;87654;Köln

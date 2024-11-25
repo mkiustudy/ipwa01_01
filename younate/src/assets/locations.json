@@ -1,10 +1,23 @@
- {
-    "afghanistan": "Afghanistan",
-    "ethiopia": "Äthiopien",
-    "drc": "Demokratische Republik Kongo",
-    "yemen": "Jemen",
-    "myanmar": "Myanmar",
+{
+    "ukraine": "Ukraine",
+    "sudan": "Sudan",
+    "democraticrepublicofcongo": "Demokratische Republik Kongo",
     "somalia": "Somalia",
-    "south_sudan": "Südsudan",
-    "syria": "Syrien"
+    "myanmar": "Myanmar",
+    "afghanistan": "Afghanistan",
+    "syria": "Syrien",
+    "yemen": "Jemen",
+    "ethiopia": "Äthiopien",
+    "haiti": "Haiti",
+    "palestinianterritories": "Palästinensische Gebiete",
+    "lebanon": "Libanon",
+    "mali": "Mali",
+    "niger": "Niger",
+    "burkinafaso": "Burkina Faso",
+    "southsudan": "Südsudan",
+    "centralafricanrepublic": "Zentralafrikanische Republik",
+    "venezuela": "Venezuela",
+    "nigeria": "Nigeria",
+    "cameroon": "Kamerun"
   }
+  

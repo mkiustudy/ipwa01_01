@@ -125,6 +125,7 @@ const router = useRouter()
 | /^[a-zA-Z\s-äöüÄÖÜß]+$/       | mindestens ein Buchstabe, Leerzeichen, -, ß oder Umlaut           | Vorname, Nachname, Ort  |
 | /^[a-zA-Z\s\d\-\.äöüÄÖÜß]+$/  | mindestens ein Buchstabe, Leerzeichen, Zahl, -, ., ß oder Umlaut  | Straße                  |
 | /^(?=.*\d)[a-zA-Z\d\s\W]+$/   | mindestens ein Buchstabe, Leerzeichen, Zahl oder Sonderzeichen    | Hausnummer              |
+| /^04[0-9]{3}$/                | 5 Zahlen, beginnend mit dem Bereich 04                            | PLZ                     |
 |-------------------------------|-------------------------------------------------------------------|-------------------------|
 */
 
