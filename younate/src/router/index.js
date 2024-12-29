@@ -1,7 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router';
-import ResultPage from '../views/ResultPage.vue'
+import PageResult from '../views/PageResult.vue'
 import MainPage from '../views/MainPage.vue'
-import TabletPage from '../views/TabletPage.vue'
+import PageTablet from '../views/PageTablet.vue';
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -10,31 +10,31 @@ const router = createRouter({
       path: '/:index?',
       name: 'MainPage',
       component: MainPage,
-      props: true
+      props: true // Aktiviert das Übergeben von Props
     },
     {
       path: '/tablet',
       name: 'TabletPage',
-      component: TabletPage,
-      props: true
+      component: PageTablet,
+      props: true // Aktiviert das Übergeben von Props
     },
     {
       path: '/result',
       name: 'result',
-      component: ResultPage,
+      component: PageResult,
       props: true // Aktiviert das Übergeben von Props
     },
     {
       path: '/impressum',
       name: 'ImpressumPage', 
       component: MainPage,
-      props: true
+      props: true // Aktiviert das Übergeben von Props
     },
     {
       path: '/datenschutz',
       name: 'DatenschutzPage', 
       component: MainPage,
-      props: true
+      props: true // Aktiviert das Übergeben von Props
     }
   ]
 });

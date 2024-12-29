@@ -125,6 +125,7 @@ const router = useRouter()
 | /^[a-zA-Z\s-äöüÄÖÜß]+$/       | mindestens ein Buchstabe, Leerzeichen, -, ß oder Umlaut           | Vorname, Nachname, Ort  |
 | /^[a-zA-Z\s\d\-\.äöüÄÖÜß]+$/  | mindestens ein Buchstabe, Leerzeichen, Zahl, -, ., ß oder Umlaut  | Straße                  |
 | /^(?=.*\d)[a-zA-Z\d\s\W]+$/   | mindestens ein Buchstabe, Leerzeichen, Zahl oder Sonderzeichen    | Hausnummer              |
+| /^04[0-9]{3}$/                | 5 Zahlen, beginnend mit dem Bereich 04                            | PLZ                     |
 |-------------------------------|-------------------------------------------------------------------|-------------------------|
 */
 
@@ -141,7 +142,7 @@ const formFields = reactive([
     value: '',
     errorMessage: 'Kleidung wählen',
     delivery: 'Alle'
-  },
+  }, // Art der Kleidung
   {
     validationRegex: /.+/,
     validationResult: true,
@@ -150,7 +151,7 @@ const formFields = reactive([
     value: '',
     errorMessage: 'Krisengebiet wählen',
     delivery: 'Alle'
-  },
+  }, // Krisengebiet
   {
     validationRegex: /^[a-zA-Z\s-äöüÄÖÜß]+$/,
     validationResult: true,
@@ -159,7 +160,7 @@ const formFields = reactive([
     maxlength: 50,
     errorMessage: 'Vornamen eingeben',
     delivery: 'Abholung'
-  },
+  }, // Vorname
   {
     validationRegex: /^[a-zA-Z\s-äöüÄÖÜß]+$/,
     validationResult: true,
@@ -168,7 +169,7 @@ const formFields = reactive([
     maxlength: 50,
     errorMessage: 'Nachnamen eingeben',
     delivery: 'Abholung'
-  },
+  }, // Nachname
   {
     validationRegex: /^[a-zA-Z\s\d\-äöüÄÖÜß.]+$/,
     validationResult: true,
@@ -177,7 +178,7 @@ const formFields = reactive([
     maxlength: 50,
     errorMessage: 'Straße eingeben',
     delivery: 'Abholung'
-  },
+  }, // Straße
   {
     validationRegex: /^(?=.*\d)[a-zA-Z\d\s\W]+$/,
     validationResult: true,
@@ -186,7 +187,7 @@ const formFields = reactive([
     maxlength: 10,
     errorMessage: 'Hausnummer eingeben',
     delivery: 'Abholung'
-  },
+  }, // Hausnummer
   {
     validationRegex: /^04[0-9]{3}$/,
     validationResult: true,
@@ -195,7 +196,7 @@ const formFields = reactive([
     maxlength: 5,
     errorMessage: 'Abholung nur im PLZ Bereich 04xxx möglich.',
     delivery: 'Abholung'
-  },
+  }, // PLZ
   {
     validationRegex: /^[a-zA-Z\s-äöüÄÖÜß]+$/,
     validationResult: true,
@@ -204,7 +205,7 @@ const formFields = reactive([
     maxlength: 50,
     errorMessage: 'Ort eingeben',
     delivery: 'Abholung'
-  }
+  } // Ort
 ])
 
 let selectedDelivery = reactive({
@@ -214,23 +215,20 @@ let selectedDelivery = reactive({
 let formTitel = 'Spende jetzt!'
 
 /**
-/**
- * Bereinigt den Eingabewert, indem ein temporäres div-Element erstellt wird und sein textContent auf den bereitgestellten Wert gesetzt wird.
- * Dadurch wird potenziellen HTML-Injections vorgebeugt, indem alle '<' und '>' Zeichen durch ihre HTML-Entity-Äquivalente ersetzt werden.
+ * Bereinigt den Eingabewert, um HTML-Injections vorzubeugen
  * @param {string} value - Der Eingabewert, der gesäubert werden soll.
  * @returns {string} - Der gesäuberte Eingabewert.
  */
-const sanitizeInput = (value, paranoid = false) => {
+const sanitizeInput = (value) => {
   const div = document.createElement('div')
-  if (paranoid) {
-    value = value.replace(/</g, '&lt;').replace(/>/g, '&gt;')
-  }
+  value = value.replace(/</g, '&lt;').replace(/>/g, '&gt;')
   div.textContent = value
   return div.innerHTML.trim()
 }
 
 /**
- * Validiert die Formularfelder und gibt true zurück, wenn alle Felder die Validierung bestehen, andernfalls false.
+ * Validiert die Formularfelder per Regular Expression
+ * speichert das Ergebnis in der validationResult-Eigenschaft jedes Formularfelds.
  * @returns {boolean} - True, wenn alle Formularfelder die Validierung bestehen, sonst false.
  */
 const validateForm = () => {
