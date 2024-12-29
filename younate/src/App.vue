@@ -23,12 +23,14 @@ export default {
   },
   data() {
     return {
+      // Mapping der Seitentitel in der Navigation zu den Routing URLs
       pages: [
         { title: 'Home', url: '/' },
         { title: 'Tablet', url: '/tablet' },
         { title: 'Impressum', url: '/impressum' },
         { title: 'Datenschutz', url: '/datenschutz' }
       ],
+      // Formularvariablen initialisieren
       formSent: false,
       formValidationError: false,
       formValidationResults: [],
@@ -36,6 +38,7 @@ export default {
     }
   },
   methods: {
+    // Formularvalidierung abfangen
     handleValidationResults(formSent, hasError, values, results) {
       this.formSent = formSent
       this.formValidationError = hasError
@@ -45,6 +48,7 @@ export default {
   }
 }
 </script>
+
 <style>
 html {
   position: relative;
@@ -52,16 +56,16 @@ html {
 }
 body {
   background-color: #deddd4 !important;
-  /* Margin bottom by footer height */
+  /* Margin bottom für den dunklen Footer*/
   margin-bottom: 60px;
 }
 .footer {
   position: absolute;
   bottom: 0;
   width: 100%;
-  /* Set the fixed height of the footer here */
+  /* Fixe höhe für den Footer */
   height: 60px;
-  line-height: 20px; /* Vertically center the text there */
+  line-height: 20px;
   background-color: #deddd4;
 }
 </style>
